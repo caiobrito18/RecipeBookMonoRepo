@@ -1,6 +1,7 @@
 package com.recipebook.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -10,17 +11,27 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @NotBlank(message = "O nome é obrigatório")
+    @Column(unique = true)
     private String nome;
     
+    @NotNull(message = "A categoria é obrigatória")
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
     
+    @NotNull(message = "O tempo de preparo é obrigatório")
+    @Min(value = 1, message = "O tempo de preparo deve ser pelo menos 1 minuto")
     private Integer tempoPreparo;
+    
+    @NotNull(message = "A quantidade de porções é obrigatória")
+    @Min(value = 1, message = "Deve render pelo menos 1 porção")
     private Integer porcoes;
     
+    @NotEmpty(message = "A receita deve ter pelo menos um ingrediente")
     @ElementCollection
     private List<String> ingredientes;
     
+    @NotBlank(message = "O modo de preparo é obrigatório")
     @Column(length = 1000)
     private String modoPreparo;
     
