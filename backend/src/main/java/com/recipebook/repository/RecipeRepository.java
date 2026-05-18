@@ -1,11 +1,13 @@
 package com.recipebook.repository;
 
-import com.recipebook.entity.Recipe;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.recipebook.entity.Recipe;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findAllByOrderByDataCadastroDesc();
+
     List<Recipe> findByNomeContainingIgnoreCaseOrderByDataCadastroDesc(String nome);
 }

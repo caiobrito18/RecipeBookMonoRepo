@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../models/recipe.model';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -17,7 +17,7 @@ import { Recipe } from '../../models/recipe.model';
           <a routerLink="/receitas" class="btn-back">Voltar</a>
         </div>
       </div>
-      
+
       <div class="details-card">
         <p><strong>Categoria:</strong> {{ recipe.categoria }}</p>
         <p><strong>Tempo de Preparo:</strong> {{ recipe.tempoPreparo }} minutos</p>

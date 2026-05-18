@@ -14,7 +14,7 @@ import { RecipeService } from '../../services/recipe.service';
         <h2>Lista de Receitas</h2>
         <a routerLink="/receitas/nova" class="btn-new">Nova Receita</a>
       </div>
-      
+
       <div class="search-bar">
         <input type="text" [(ngModel)]="termoBusca" (input)="onSearch()" placeholder="Buscar receita por nome..." />
       </div>
