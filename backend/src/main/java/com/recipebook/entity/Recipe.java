@@ -1,54 +1,105 @@
 package com.recipebook.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persi
+
+    rt jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validatio
+
+    
 @Entity
 public class Recipe {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message = "O nome é obrigatório")
+
     @Column(unique = true)
     private String nome;
     
-    @NotNull(message = "A categoria é obrigatória")
+
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
     
-    @NotNull(message = "O tempo de preparo é obrigatório")
+
     @Min(value = 1, message = "O tempo de preparo deve ser pelo menos 1 minuto")
     private Integer tempoPreparo;
     
-    @NotNull(message = "A quantidade de porções é obrigatória")
+
     @Min(value = 1, message = "A quantidade de porções não pode ser menor do que 1")
     private Integer porcoes;
     
-    @NotEmpty(message = "A receita deve ter pelo menos um ingrediente")
+    @NotEmpty(message = "
+         receita d
+    v
+
     @ElementCollection
-    private List<String> ingredientes;
+        
     
-    @NotBlank(message = "O modo de preparo é obrigatório")
-    @Column(length = 1000)
+
+    
+        
+    
+
+    @NotBlank(message = "O modo de pre
+        aro é obrigatório
+    )
+
     private String modoPreparo;
+        
     
-    private LocalDateTime dataCadastro = LocalDateTime.now();
+
+    
+        
+    
+
+    
+        
+    
 
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+        
     
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
+
+    public void setId(Long id) { 
+        his.id = id; }
     
-    public Categoria getCategoria() { return categoria; }
-    public void setCategoria(Categoria categoria) { this.categoria = categoria; }
+
     
-    public Integer getTempoPreparo() { return tempoPreparo; }
-    public void setTempoPreparo(Integer tempoPreparo) { this.tempoPreparo = tempoPreparo; }
+        
+    
+
+    public void setNome(String nome) { this
+        nome = nome; }
+    
+
+    
+        
+    
+
+    public void setCategoria(Categor
+        a categoria) { this
+    c
+
+    
+        
+    
+
+    public void setTempoPreparo(Integer temp
+        Preparo) { this.temp
+    P
+
+    
+        
     
     public Integer getPorcoes() { return porcoes; }
     public void setPorcoes(Integer porcoes) { this.porcoes = porcoes; }
