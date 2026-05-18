@@ -9,5 +9,7 @@ export const routes: Routes = [
   {
     path: 'receitas/nova',
     loadComponent: () => import('./pages/recipe-form/recipe-form').then(m => m.RecipeForm)
-  }
-];
+  },
+  {
+    path: 'receitas/:id',
+    loadComponent: () => import('./pages/recipe-detail/recipe-detail').then(m => m.RecipeDetail)
