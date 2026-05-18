@@ -9,11 +9,15 @@ import { Recipe } from '../../models/recipe.model';
   imports: [CommonModule, RouterModule],
   template: `
     <div class="container">
-      <h2>Lista de Receitas</h2>
+      <div class="header">
+        <h2>Lista de Receitas</h2>
+        <a routerLink="/receitas/nova" class="btn-new">Nova Receita</a>
+      </div>
       <div *ngIf="recipes.length === 0" class="empty-state">
         Nenhuma receita cadastrada
       </div>
       <div class="recipe-grid">
+
         <div *ngFor="let r of recipes" class="recipe-card">
           <h3>{{ r.nome }}</h3>
           <p>Categoria: {{ r.categoria }}</p>

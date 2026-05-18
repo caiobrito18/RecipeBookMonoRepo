@@ -14,4 +14,8 @@ export class RecipeService {
   listar(): Observable<Recipe[]> {
     return this.http.get<Recipe[]>(this.apiUrl);
   }
+
+  criar(recipe: Recipe): Observable<Recipe> {
+    return this.http.post<Recipe>(this.apiUrl, recipe);
+  }
 }
