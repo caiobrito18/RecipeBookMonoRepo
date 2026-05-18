@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findAllByOrderByDataCadastroDesc();
+    List<Recipe> findByNomeContainingIgnoreCaseOrderByDataCadastroDesc(String nome);
 }

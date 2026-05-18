@@ -24,8 +24,18 @@ public class RecipeController {
     private RecipeRepository recipeRepository;
 
     @GetMapping
-    public List<Recipe> listar() {
+    public List<Recipe> listar(@RequestParam(required = false) String nome) {
+        if (nome != null && !nome.isEmpty()) {
+            return recipeRepository.findByNomeContainingIgnoreCaseOrderByDataCadastroDesc(nome);
+        }
         return recipeRepository.findAllByOrderByDataCadastroDesc();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Recipe> buscarPorId(@PathVariable Long id) {
+        return recipeRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
@@ -36,5 +46,14 @@ public class RecipeController {
         } catch (Exception e) {
             throw new RuntimeException("ConstraintViolationException");
         }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
+        if (!recipeRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        recipeRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
