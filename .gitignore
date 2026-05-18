@@ -1,0 +1,9 @@
+
+# === ANGULAR / NODE ===
+node_modules/
+dist/
+.angular/
+*.env
+.DS_Store
+target/
+
