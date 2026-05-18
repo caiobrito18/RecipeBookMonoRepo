@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recipe } from '../models/recipe.model';
 
@@ -11,11 +11,20 @@ export class RecipeService {
 
   constructor(private http: HttpClient) { }
 
-  listar(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.apiUrl);
+  listar(nome?: string): Observable<Recipe[]> {
+    const url = nome ? `${this.apiUrl}?nome=${nome}` : this.apiUrl;
+    return this.http.get<Recipe[]>(url);
+  }
+
+  buscarPorId(id: number): Observable<Recipe> {
+    return this.http.get<Recipe>(`${this.apiUrl}/${id}`);
   }
 
   criar(recipe: Recipe): Observable<Recipe> {
     return this.http.post<Recipe>(this.apiUrl, recipe);
+  }
+
+  excluir(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
