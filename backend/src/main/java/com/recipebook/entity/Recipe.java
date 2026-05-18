@@ -24,7 +24,7 @@ public class Recipe {
     private Integer tempoPreparo;
     
     @NotNull(message = "A quantidade de porções é obrigatória")
-    @Min(value = 1, message = "Deve render pelo menos 1 porção")
+    @Min(value = 1, message = "A quantidade de porções não pode ser menor do que 1")
     private Integer porcoes;
     
     @NotEmpty(message = "A receita deve ter pelo menos um ingrediente")
