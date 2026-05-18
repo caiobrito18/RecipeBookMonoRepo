@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../models/recipe.model';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-form',
@@ -12,9 +12,9 @@ import { Recipe } from '../../models/recipe.model';
   template: `
     <div class="container">
       <h2>Cadastrar Receita</h2>
-      
+
       <div *ngIf="successMessage" class="success-msg">{{ successMessage }}</div>
-      
+
       <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label>Nome:</label>
